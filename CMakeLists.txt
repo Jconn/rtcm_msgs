@@ -1,16 +1,15 @@
-cmake_minimum_required(VERSION 2.8.3)
+
+cmake_minimum_required(VERSION 3.5)
 project(rtcm_msgs)
 
-find_package(catkin REQUIRED COMPONENTS std_msgs message_generation)
+find_package(ament_cmake REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(builtin_interfaces REQUIRED)
 
-add_message_files(
-  FILES
-  Message.msg
-)
+rosidl_generate_interfaces(${PROJECT_NAME}
+  "msg/RtcmMessage.msg"
+  DEPENDENCIES sensor_msgs std_msgs)
 
-generate_messages(
-  DEPENDENCIES
-  std_msgs
-)
-
-catkin_package(CATKIN_DEPENDS std_msgs message_runtime)
+ament_package()

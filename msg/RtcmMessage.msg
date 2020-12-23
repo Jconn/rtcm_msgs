@@ -1,5 +1,5 @@
 # A message representing a single RTCM message.
-Header header
+std_msgs/Header header
 
 uint8[] message
 
